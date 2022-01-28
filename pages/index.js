@@ -1,34 +1,9 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import appConfig from'../config.json'
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 
-const GlobalStyle = () => {
-  return (
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: 'Open Sans', sans-serif;
-      }
-      /* App fit Height */ 
-      html, body, #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */ 
-    `}</style>
-  )
-}
+
 
 const Title = (props) => {
   const Tag = props.tag || 'h1';
@@ -61,11 +36,11 @@ const Title = (props) => {
 // }
 
 const HomePage = () => {
-  const username = 'THONWELLING';
 
+  const [username, setUsername] = useState('')
+  const route = useRouter()
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -89,9 +64,15 @@ const HomePage = () => {
             backgroundColor: appConfig.theme.colors.neutrals[999],
           }}
         >
-          {/* Formulário */}
+          {/* Form */}
           <Box
             as="form"
+            onSubmit={(e) => {
+              e.preventDefault()
+              console.log('SomeOne  Submitted the Form')
+              route.push('/chat')
+              }}
+
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -103,6 +84,8 @@ const HomePage = () => {
             </Text>
 
             <TextField
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -125,9 +108,6 @@ const HomePage = () => {
               }}
             />
           </Box>
-          {/* Form */}
-
-
           {/* Photo Area */}
           <Box
             styleSheet={{
@@ -163,10 +143,9 @@ const HomePage = () => {
               {username}
             </Text>
           </Box>
-          {/* Photo Area */}
         </Box>
       </Box>
     </>
-  );
+  )
 }
 export default HomePage
