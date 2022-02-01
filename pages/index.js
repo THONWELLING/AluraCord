@@ -63,7 +63,18 @@ const HomePage = () => {
             onSubmit={(e) => {
               e.preventDefault();
               console.log("SomeOne  Submitted the Form");
-              route.push("/chat");
+              route.push(`/chat?username=${username}`);
+              {
+                "!username" && (
+                  <div className="loading">
+                    <img
+                      src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif"
+                      alt="Loading"
+                    />
+                    ;
+                  </div>
+                );
+              }
             }}
             styleSheet={{
               display: "flex",
