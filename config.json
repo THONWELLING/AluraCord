@@ -1,6 +1,9 @@
 {
-  "name": "Aluracord - Matrix",
   "theme": {
+    "name": "Sasuke - Naruto",
+    "backgroundImage": "url(/background.png)",
+    "backgroundImage2": "url(/background-2.jpg)",
+    "icon": "url(https://img1.gratispng.com/20180511/csq/kisspng-tablet-pharmaceutical-drug-capsule-computer-icons-5af633109df532.250236671526084368647.jpg)",
     "colors": {
       "primary": {
         "050": "#E3F9E5",
@@ -10,7 +13,7 @@
         "400": "#57AE5B",
         "500": "#3F9142",
         "600": "#2F8132",
-        "700": "rgba(18, 18, 18, .9)",
+        "700": "rgba(18, 18, 18, .7)",
         "800": "#0E5814",
         "900": "#05400A"
       },
@@ -22,11 +25,11 @@
         "300": "#9AA5B1",
         "400": "#52667A",
         "500": "#313D49",
-        "600": "rgba(29, 33, 33, .6)",
+        "600": "rgba(29, 33, 33, .8)",
         "700": "#212931",
         "800": "#181F25",
         "900": "#101418",
-        "999": "rgba(14, 14, 14, .9)"
+        "999": "rgba(14, 14, 14, .7)"
       }
     }
   },

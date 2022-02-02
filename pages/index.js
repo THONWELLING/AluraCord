@@ -31,9 +31,8 @@ const HomePage = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          //backgroundColor: appConfig.theme.colors.primary[500],
-          backgroundImage:
-            "url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain-1536x864.jpg)",
+          backgroundColor: appConfig.theme.colors.neutrals[300],
+          backgroundImage: appConfig.theme.backgroundImage,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundBlendMode: "multiply",
@@ -53,7 +52,7 @@ const HomePage = () => {
             borderRadius: "15px",
             padding: "32px",
             margin: "16px",
-            boxShadow: "0 2px 10px 0 rgb(0 0 0 / 20%)",
+            boxShadow: "0 2px 10px 0 rgb(255 255 255 / 20%)",
             backgroundColor: appConfig.theme.colors.neutrals[999],
           }}
         >
@@ -64,17 +63,6 @@ const HomePage = () => {
               e.preventDefault();
               console.log("SomeOne  Submitted the Form");
               route.push(`/chat?username=${username}`);
-              {
-                "!username" && (
-                  <div className="loading">
-                    <img
-                      src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif"
-                      alt="Loading"
-                    />
-                    ;
-                  </div>
-                );
-              }
             }}
             styleSheet={{
               display: "flex",
@@ -106,7 +94,7 @@ const HomePage = () => {
                   textColor: appConfig.theme.colors.neutrals[200],
                   mainColor: appConfig.theme.colors.neutrals[900],
                   mainColorHighlight: appConfig.theme.colors.primary[500],
-                  backgroundColor: appConfig.theme.colors.neutrals[800],
+                  backgroundColor: appConfig.theme.colors.neutrals[600],
                 },
               }}
             />
@@ -115,9 +103,9 @@ const HomePage = () => {
               label="Enter"
               fullWidth
               buttonColors={{
-                contrastColor: appConfig.theme.colors.neutrals["000"],
+                contrastColor: appConfig.theme.colors.neutrals["100"],
                 mainColor: appConfig.theme.colors.primary[500],
-                mainColorLight: appConfig.theme.colors.primary[400],
+                mainColorLight: appConfig.theme.colors.primary[700],
                 mainColorStrong: appConfig.theme.colors.primary[600],
               }}
             />
@@ -130,7 +118,7 @@ const HomePage = () => {
               alignItems: "center",
               maxWidth: "200px",
               padding: "16px",
-              backgroundColor: appConfig.theme.colors.neutrals[800],
+              backgroundColor: appConfig.theme.colors.neutrals[600],
               border: "1px solid",
               borderColor: appConfig.theme.colors.neutrals[999],
               borderRadius: "15px",
@@ -142,6 +130,7 @@ const HomePage = () => {
               styleSheet={{
                 borderRadius: "50%",
                 marginBottom: "16px",
+                opacity: ".6",
               }}
               src={`https://github.com/${username}.png`}
             />
@@ -149,9 +138,9 @@ const HomePage = () => {
               variant="body4"
               styleSheet={{
                 color: appConfig.theme.colors.neutrals[200],
-                backgroundColor: appConfig.theme.colors.neutrals[900],
-                padding: "3px 10px",
-                borderRadius: "15px",
+                backgroundColor: appConfig.theme.colors.neutrals[600],
+                padding: "5px 10px",
+                borderRadius: "5px",
               }}
             >
               {username}

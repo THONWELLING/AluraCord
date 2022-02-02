@@ -1,5 +1,4 @@
 const GlobalStyle = () => {
-  
   return (
     <style global jsx>
       {`
@@ -10,10 +9,13 @@ const GlobalStyle = () => {
           list-style: none;
         }
         body {
-          font-family: 'Open Sans', sans-serif;
+          font-family: "Open Sans", sans-serif;
+          background-image: url(/public/background);
         }
-        /* App fit Height */ 
-        html, body, #__next {
+        /* App fit Height */
+        html,
+        body,
+        #__next {
           min-height: 100vh;
           display: flex;
           flex: 1;
@@ -24,12 +26,11 @@ const GlobalStyle = () => {
         #__next > * {
           flex: 1;
         }
-        /* ./App fit Height */ 
-     `}
+        /* ./App fit Height */
+      `}
     </style>
-  )
-}
-
+  );
+};
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -37,7 +38,7 @@ const MyApp = ({ Component, pageProps }) => {
       <GlobalStyle />
       <Component {...pageProps} />
     </>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;
