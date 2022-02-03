@@ -3,6 +3,7 @@
     "name": "Sasuke - Naruto",
     "backgroundImage": "url(/background.png)",
     "backgroundImage2": "url(/background-2.jpg)",
+    "backgroundImageLoading": "url(/loading.gif)",
     "icon": "url(https://img1.gratispng.com/20180511/csq/kisspng-tablet-pharmaceutical-drug-capsule-computer-icons-5af633109df532.250236671526084368647.jpg)",
     "colors": {
       "primary": {

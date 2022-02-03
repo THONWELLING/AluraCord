@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Box, Text, TextField, Image } from "@skynexui/components";
+import { Box, TextField } from "@skynexui/components";
 import { createClient } from "@supabase/supabase-js";
 
 import appConfig from "../config.json";
 import Header from "../src/components/Header";
 import MessageList from "../src/components/MessageList";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
+import Loading from "../src/components/Loading";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQyMTg0MSwiZXhwIjoxOTU4OTk3ODQxfQ.jq6Rek4qIelp34IPNsmOFhvrmABNHvlS0JOCrgOPsTo";
@@ -77,75 +78,78 @@ export default function ChatPage() {
         backgroundBlendMode: "multiply",
       }}
     >
-      <Box
-        styleSheet={{
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          boxShadow: "0 2px 10px 0 rgb(255 255 255 / 20%)",
-          borderRadius: "15px",
-          backgroundColor: appConfig.theme.colors.primary[700],
-          height: "100%",
-          maxWidth: "95%",
-          maxHeight: "95vh",
-          padding: "32px",
-        }}
-      >
-        <Header />
+      {listaDeMensagens <= 0 ? (
+        <Loading />
+      ) : (
         <Box
           styleSheet={{
-            position: "relative",
             display: "flex",
-            flex: 1,
-            height: "80%",
             flexDirection: "column",
+            flex: 1,
+            boxShadow: "0 2px 10px 0 rgb(255 255 255 / 20%)",
             borderRadius: "15px",
-            padding: "20px",
+            backgroundColor: appConfig.theme.colors.primary[700],
+            height: "100%",
+            maxWidth: "95%",
+            maxHeight: "95vh",
+            padding: "32px",
           }}
         >
-          <MessageList mensagens={listaDeMensagens} />
+          <Header />
           <Box
-            as="form"
             styleSheet={{
+              position: "relative",
               display: "flex",
-              alignItems: "center",
+              flex: 1,
+              height: "80%",
+              flexDirection: "column",
+              borderRadius: "15px",
+              padding: "20px",
             }}
           >
-            <TextField
-              value={mensagem}
-              onChange={(e) => {
-                const valor = e.target.value;
-                setMensagem(valor);
-              }}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleNovaMensagem(mensagem);
-                }
-              }}
-              placeholder="type your new message here..."
-              type="textarea"
+            <MessageList mensagens={listaDeMensagens} />
+            <Box
+              as="form"
               styleSheet={{
-                width: "100%",
-                border: "0",
-                resize: "none",
-                borderRadius: "15px",
-                padding: "6px 8px",
-                backgroundColor: appConfig.theme.colors.neutrals[999],
-                marginRight: "20px",
-                color: appConfig.theme.colors.neutrals[200],
+                display: "flex",
+                alignItems: "center",
               }}
-            />
-            <ButtonSendSticker
-              onStickerClick={(sticker) => {
-                console.log("Save Sticker into the Bank", sticker);
-                handleNovaMensagem(":sticker: " + sticker);
-              }}
-            />
+            >
+              <TextField
+                value={mensagem}
+                onChange={(e) => {
+                  const valor = e.target.value;
+                  setMensagem(valor);
+                }}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleNovaMensagem(mensagem);
+                  }
+                }}
+                placeholder="type your new message here..."
+                type="textarea"
+                styleSheet={{
+                  width: "100%",
+                  border: "0",
+                  resize: "none",
+                  borderRadius: "15px",
+                  padding: "6px 8px",
+                  backgroundColor: appConfig.theme.colors.neutrals[999],
+                  marginRight: "20px",
+                  color: appConfig.theme.colors.neutrals[200],
+                }}
+              />
+              <ButtonSendSticker
+                onStickerClick={(sticker) => {
+                  console.log("Save Sticker into the Bank", sticker);
+                  handleNovaMensagem(":sticker: " + sticker);
+                }}
+              />
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
     </Box>
   );
 }
-<MessageList />;
