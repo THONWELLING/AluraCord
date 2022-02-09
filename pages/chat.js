@@ -7,8 +7,8 @@ import { createClient } from "@supabase/supabase-js";
 import appConfig from "../config.json";
 import Header from "../src/components/Header";
 import MessageList from "../src/components/MessageList";
-import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 import Loading from "../src/components/Loading";
+import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQyMTg0MSwiZXhwIjoxOTU4OTk3ODQxfQ.jq6Rek4qIelp34IPNsmOFhvrmABNHvlS0JOCrgOPsTo";
@@ -18,7 +18,7 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 function mensagensEmRealTime(adicionaMensagem) {
   return supabaseClient
     .from("mensagens")
-    .on("INSERT", ({ respostaLive }) => {
+    .on("INSERT", (respostaLive) => {
       adicionaMensagem(respostaLive.new);
     })
     .subscribe();
@@ -28,20 +28,23 @@ export default function ChatPage() {
   const roteamento = useRouter();
   const usuaioLogado = roteamento.query.username;
   const [mensagem, setMensagem] = useState("");
+  //  const [loading, setLoading] = useState(true)
   const [listaDeMensagens, setListaDeMensagens] = useState([]);
 
   useEffect(() => {
-    supabaseClient
-      .from("mensagens")
-      .select("*")
-      .order("id", { ascending: false })
-      .then(({ data }) => {
-        console.log("dados da consulta", data);
-        setListaDeMensagens(data);
-      });
+    setTimeout(() => {
+      supabaseClient
+        .from("mensagens")
+        .select("*")
+        .order("id", { ascending: false })
+        .then(({ data }) => {
+          console.log("dados da consulta", data);
+          setListaDeMensagens(data);
+        });
+    }, 1100);
     mensagensEmRealTime((novaMensagem) => {
       setListaDeMensagens((valorAtualDaLista) => {
-        return [data[0], ...valorAtualDaLista];
+        return [novaMensagem, ...valorAtualDaLista];
       });
     });
   }, []);
@@ -78,7 +81,7 @@ export default function ChatPage() {
         backgroundBlendMode: "multiply",
       }}
     >
-      {listaDeMensagens <= 0 ? (
+      {listaDeMensagens.length === 0 ? (
         <Loading />
       ) : (
         <Box

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, TextField, Image } from "@skynexui/components";
+import { Box, Text, Image } from "@skynexui/components";
 import appConfig from "../../../config.json";
 
 const MessageList = (props) => {
