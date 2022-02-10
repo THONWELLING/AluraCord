@@ -1,4 +1,4 @@
-import { Box, Button, Text, Image } from "@skynexui/components";
+import { Box, Button, Text } from "@skynexui/components";
 import { useRouter } from "next/router";
 import appConfig from "../config.json";
 
@@ -12,7 +12,7 @@ function Page404() {
         justifyContent: "center",
         backgroundColor: "transparent",
 
-        backgroundImage: appConfig.theme.backgroundImage2,
+        backgroundImage: appConfig.theme.backgroundImage404,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundBlendMode: "multiply",
@@ -25,29 +25,35 @@ function Page404() {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          color: "#ccc",
+          color: "#141414",
         }}
       >
         <Text
           styleSheet={{
             fontFamily: "Patua One, cursive;",
-            fontSize: "60px",
+            fontSize: "70px",
+            fontWeight: "bold",
+            marginBottom: "40px",
+            color: "red",
+            textShadow: "2px 2px 3px gray",
           }}
           tag="h1"
         >
           404
         </Text>
 
-        <Text>Você Perdeu o Caminho de Casa</Text>
-
         <Text
           styleSheet={{
             marginBottom: "40px",
             textAlign: "center",
+            fontSize: "25px",
+            lineHeight: "40px",
+            textShadow: "2px 2px 3px white",
           }}
           tag="p"
         >
-          Não se preocupe, você não está só, volte para o inicio.
+          Você Perdeu o Caminho Herói, <br />
+          Mas ,Não se preocupe, você não está Sozinho.Volte ao Início.
         </Text>
 
         <Button
@@ -57,10 +63,10 @@ function Page404() {
             mainColorLight: "#E67635",
             mainColorStrong: "#AB4E19",
           }}
-          label="Home"
+          label="  Home  "
           colorVariant="dark"
-          rounded="md"
-          size="md"
+          rounded="full"
+          size="xl"
           styleSheet={{
             disabled: {},
             focus: {},
