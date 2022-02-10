@@ -9,10 +9,10 @@ import MessageList from "../src/components/MessageList";
 import Loading from "../src/components/Loading";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 
-const SUPABASE_ANON_KEY =
+const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQyMTg0MSwiZXhwIjoxOTU4OTk3ODQxfQ.jq6Rek4qIelp34IPNsmOFhvrmABNHvlS0JOCrgOPsTo";
-const SUPABASE_URL = "https://qvnjzdtfhsbeklbddtqv.supabase.co";
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseUrl = "https://qvnjzdtfhsbeklbddtqv.supabase.co";
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
 function mensagensEmRealTime(adicionaMensagem) {
   return supabaseClient
